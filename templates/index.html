@@ -2,27 +2,42 @@
 <html>
 <head>
     <title>Smart Lender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
+<div class="container">
 
 <h1>Smart Lender Loan Prediction System</h1>
 
 <form method="POST">
 
-    <label>Gender (1=Male, 0=Female):</label><br>
-    <input type="number" name="Gender"><br><br>
+    <label>Gender:</label><br>
+<select name="Gender">
+    <option value="1">Male</option>
+    <option value="0">Female</option>
+</select><br><br>
 
-    <label>Married (1=Yes, 0=No):</label><br>
-    <input type="number" name="Married"><br><br>
+    <label>Married:</label><br>
+<select name="Married">
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+</select><br><br>
 
     <label>Dependents:</label><br>
     <input type="number" name="Dependents"><br><br>
 
-    <label>Education (1=Graduate, 0=Not Graduate):</label><br>
-    <input type="number" name="Education"><br><br>
+    <label>Education:</label><br>
+<select name="Education">
+    <option value="1">Graduate</option>
+    <option value="0">Not Graduate</option>
+</select><br><br>
 
-    <label>Self Employed (1=Yes, 0=No):</label><br>
-    <input type="number" name="Self_Employed"><br><br>
+    <label>Self Employed:</label><br>
+<select name="Self_Employed">
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+</select><br><br>
 
     <label>Applicant Income:</label><br>
     <input type="number" name="ApplicantIncome"><br><br>
@@ -36,17 +51,30 @@
     <label>Loan Amount Term:</label><br>
     <input type="number" name="Loan_Amount_Term"><br><br>
 
-    <label>Credit History (1=Good, 0=Bad):</label><br>
-    <input type="number" name="Credit_History"><br><br>
+    <label>Credit History:</label><br>
+<select name="Credit_History">
+    <option value="1">Good</option>
+    <option value="0">Bad</option>
+</select><br><br>
 
-    <label>Property Area (0=Rural, 1=Semiurban, 2=Urban):</label><br>
-    <input type="number" name="Property_Area"><br><br>
+    <label>Property Area:</label><br>
+<select name="Property_Area">
+    <option value="0">Rural</option>
+    <option value="1">Semiurban</option>
+    <option value="2">Urban</option>
+</select><br><br>
 
     <input type="submit" value="Predict">
 
 </form>
 
-<h2>{{ prediction }}</h2>
+{% if prediction %}
+<div class="result {{ result_class }}">
+    <h2>{{ prediction }}</h2>
+</div>
+{% endif %}
+
+</div>
 
 </body>
 </html>

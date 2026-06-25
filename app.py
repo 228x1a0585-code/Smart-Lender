@@ -11,6 +11,7 @@ model = pickle.load(open("smart_lender_model.pkl", "rb"))
 def home():
 
     prediction = ""
+    result_class = ""
 
     if request.method == "POST":
 
@@ -32,10 +33,15 @@ def home():
 
         if prediction_result[0] == 1:
             prediction = "Loan Approved"
+            result_class = "approved"
         else:
             prediction = "Loan Rejected"
+            result_class = "rejected"
 
-    return render_template("index.html", prediction=prediction)
-
+    return render_template(
+        "index.html",
+        prediction=prediction,
+        result_class=result_class
+    )
 if __name__ == "__main__":
     app.run(debug=True)
